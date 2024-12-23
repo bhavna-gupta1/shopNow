@@ -1,0 +1,37 @@
+.filter_btn{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.custom-outline-btn {
+   margin-left: 40px;
+    border: 1px solid black; /* Dark black outline */
+    color: #000;        /* Text color */
+  }
+
+  
+.btn_div{
+    display: flex;
+    flex-direction: row;
+   
+}
+.addtocart{
+border: 1px solid black;
+margin-left: 2px;
+}
+.buynow{
+border: 1px solid black;
+margin-left: 20px;
+
+}
+.buynow:hover{
+    color: white;
+background:rgb(12, 163, 12);
+cursor: pointer;
+}
+.addtocart:hover{
+    color: white;
+    background: red;
+}
