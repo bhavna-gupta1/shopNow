@@ -1,11 +1,13 @@
 import React, { useState} from 'react'
 import './Productfilter.css'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Productfilter() {
     // const [username, setusername] = useState();
     // const [password, setpassword] = useState();
     const [data, setdata] = useState();
+    const navigate=useNavigate();
     const [category, setCategory] = useState("all");
    
    // Function to fetch products by category
@@ -36,6 +38,10 @@ function Productfilter() {
     function onEdit(productId) {
         console.log("Edit product with ID:", productId);
       }
+
+  const handleShopNow = (id) => {
+    navigate(`/product/${id}`); // Navigate to ProductDetail with productId
+  };
   return (
     <>
    <div className='filter_btn'>
@@ -50,7 +56,7 @@ function Productfilter() {
   
    <div className="container mt-4">
       <div className="row">
-        {data.map((product) => (
+        {data && Array.isArray(data) && data.map((product) => (
           <div className="col-md-4 mb-4" key={product.id}>
             <div className="card" style={{ width: "18rem" }}>
               <img
@@ -71,7 +77,7 @@ function Productfilter() {
                   <strong>Rating:</strong> {product.rating.rate} ⭐ 
                   ({product.rating.count} reviews)
                 </p>
-                <div className="btn_div d-flex justify-content-between">
+                {/* <div className="btn_div d-flex justify-content-between">
                   <button
                     type="button"
                     className="btn btn-outline-dark addtocart"
@@ -82,7 +88,11 @@ function Productfilter() {
                   <button type="button" className="btn btn-outline-dark buynow">
                     Buy Now
                   </button>
-                </div>
+                </div> */}
+                <button type="button" className="btn btn-outline-dark buynow"
+                onClick={() => handleShopNow(product.id)}>
+                  ShopNow
+                  </button>
               </div>
             </div>
           </div>

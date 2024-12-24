@@ -1,0 +1,126 @@
+/* General styling for the product detail container */
+.product-detail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  /* Styling for the left section (product image) */
+  .product-detail-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .product-image {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  /* Styling for the right section (product details) */
+  .product-detail-right {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .product-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  .product-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff5722;
+  }
+  
+  .product-rating {
+    font-size: 16px;
+    color: #ff9800;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.5;
+  }
+  
+  .product-category {
+    font-size: 14px;
+    color: #757575;
+  }
+  
+  .product-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  /* Button styles */
+  .product-actions .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-to-cart {
+    background-color: #4caf50;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #45a049;
+  }
+  
+  .buy-now {
+    background-color: #ff5722;
+    transition: background-color 0.3s;
+  }
+  
+  .buy-now:hover {
+    background-color: #e64a19;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .product-detail {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-detail-left, .product-detail-right {
+      flex: none;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .product-image {
+      width: 300px;
+      height: 300px;
+    }
+  
+    .product-actions {
+      justify-content: center;
+    }
+  }
+  
