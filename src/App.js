@@ -8,6 +8,7 @@ import ProductDetail from './Component/ProductDetail/ProductDetail';
 import Layout from './Component/Layout';
 import Crausel from './Component/Crausel';
 import CartPage from './Component/CartpAGE/CartPage';
+import Login from './Component/Login/Login';
 
 function App() {
  
@@ -16,7 +17,10 @@ function App() {
    
     <BrowserRouter>
     <Routes>
-        <Route path="/" element={<Layout/>}>
+        <Route path="/" element={<>
+        <Layout/>
+         
+        </>}>
         
           {/* Default route: Navbar + Carousel + Productfilter */}
           <Route
@@ -33,6 +37,7 @@ function App() {
           {/* Product Detail Page: Only Navbar and ProductDetail */}
           <Route path="product/:productId" element={<ProductDetail />} />
           <Route path="/cart" element={<CartPage/>} />
+         
         </Route>
       </Routes>
     </BrowserRouter>

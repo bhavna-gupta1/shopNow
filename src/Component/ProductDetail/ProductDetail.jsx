@@ -16,6 +16,12 @@ function ProductDetail() {
     return <p>Loading...</p>;
   }
   function Addtocart(){
+    const token=JSON.parse(localStorage.getItem('token'))
+   if (!token){
+    alert("Pleas Login ")
+   }
+   else{
+
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const isProductInCart = existingCart.some((item) => item.id === product.id);
@@ -32,6 +38,8 @@ function ProductDetail() {
  
     alert('Product Added to Cart');
       }
+   }
+    
     
   }
 
@@ -47,11 +55,12 @@ function ProductDetail() {
         <p className="product-description"><strong>Description:</strong> {product.description}</p>
         <p className="product-category"><strong>Category:</strong> {product.category}</p>
         <div className="product-actions">
-          <button className="btn add-to-cart" onClick={Addtocart}>Add to Cart</button>
-          <button className="btn buy-now">Buy Now</button>
+          <button className=" add-to-cart" onClick={Addtocart}>Add to Cart</button>
+          <button className=" buy-now">Buy Now</button>
         </div>
       </div>
     </div>
+    
   );
 }
 
