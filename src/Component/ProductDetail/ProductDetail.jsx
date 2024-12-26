@@ -18,7 +18,7 @@ function ProductDetail() {
   function Addtocart(){
     const token=JSON.parse(localStorage.getItem('token'))
    if (!token){
-    alert("Pleas Login ")
+    alert("Please Login ")
    }
    else{
 

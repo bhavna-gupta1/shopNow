@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './CartPage.css';
+import { useNavigate } from 'react-router-dom';
 
 function CartPage() {
+  const navigate=useNavigate()
   const [cart, setCart] = useState(() => {
     const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : [];
+    const parsedCart = storedCart ? JSON.parse(storedCart) : [];
+    return parsedCart.map((item) => ({
+      ...item,
+      quantity: item.quantity || 1, // Ensure every item has a quantity
+      totalPrice: item.totalPrice || item.price, // Initialize totalPrice
+    }));
   });
 
   // Increment quantity of a product
@@ -35,10 +42,14 @@ function CartPage() {
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
-
+  const Continue_Address = () => {
+    navigate('/address', {
+      state: { totalPrice, totalDiscount, totalAmount }, // Pass the values to AddressPage
+    });
+  };
   // Calculate totals
-  const totalPrice = cart.reduce((acc, item) => acc + (item.totalPrice || item.price), 0);
-  const totalDiscount = 45; // Fixed discount value (you can calculate based on logic)
+  const totalPrice = cart.reduce((acc, item) => acc + item.totalPrice, 0);
+  const totalDiscount = 25; // Fixed discount value
   const totalAmount = totalPrice - totalDiscount;
 
   return (
@@ -56,13 +67,13 @@ function CartPage() {
                 <div className="cart-item-details">
                   <h5 className="cart-item-title">{product.title}</h5>
                   <p className="cart-item-price">Price: ${product.price}</p>
-                  <p>Total Price: ${product.totalPrice || product.price}</p>
+                  <p>Total Price: ${product.totalPrice.toFixed(2)}</p>
                   <p className="cart-item-description">{product.description}</p>
                   <div className="cart-item-quantity">
                     <button onClick={() => decrementQuantity(product.id)} className="btn-quantity">
                       -
                     </button>
-                    <span>{product.quantity || 1}</span>
+                    <span>{product.quantity}</span>
                     <button onClick={() => incrementQuantity(product.id)} className="btn-quantity">
                       +
                     </button>
@@ -92,7 +103,7 @@ function CartPage() {
             <p>Amount</p>
             <span>${totalAmount.toFixed(2)}</span>
           </div>
-          <button className="btn-continue">Continue</button>
+          <button className="btn-continue" onClick={Continue_Address}>Continue</button>
         </div>
       </div>
     </div>
